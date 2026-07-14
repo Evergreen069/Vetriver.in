@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Vetriver — Admin</title>
+<link rel="icon" href="assets/logo-mark.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --root:#0E1C15; --root-2:#12241B; --root-3:#1A3226;
+  --khus:#C89A54; --khus-lit:#E3BC7E; --paper:#EFE7D8; --dim:#A9B3A6;
+  --line:rgba(200,154,84,.20);
+  --ok:#5FBF7F; --warn:#E0A33C; --bad:#B4463F;
+  --display:"Fraunces",Georgia,serif; --body:"Inter Tight",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--root);color:var(--paper);font-family:var(--body);font-size:15px}
+:focus-visible{outline:2px solid var(--khus-lit);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+header{border-bottom:1px solid var(--line);background:var(--root-2);position:sticky;top:0;z-index:20}
+header .wrap{display:flex;align-items:center;gap:14px;height:64px}
+header img{width:30px}
+header b{font-family:var(--display);font-size:19px;letter-spacing:.04em}
+header small{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--khus);
+  text-transform:uppercase;display:block;margin-top:-3px}
+header .sp{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--dim)}
+#logout{background:none;border:1px solid var(--line);color:var(--dim);cursor:pointer;
+  font-family:var(--mono);font-size:11px;padding:7px 12px;border-radius:2px}
+#logout:hover{border-color:var(--khus);color:var(--paper)}
+
+h2{font-family:var(--display);font-weight:400;font-size:26px;margin:38px 0 16px}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--khus);margin:0 0 6px}
+
+/* login */
+#login{max-width:380px;margin:14vh auto;padding:0 24px;text-align:center}
+#login img{width:56px;margin-bottom:20px}
+#login h1{font-family:var(--display);font-weight:400;font-size:28px;margin:0 0 8px}
+#login p{color:var(--dim);font-size:14px;margin:0 0 24px}
+input,select{background:var(--root-2);border:1px solid var(--line);color:var(--paper);
+  font-family:var(--body);font-size:14px;padding:11px 12px;border-radius:2px;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--khus)}
+.btn{background:var(--khus);border:1px solid var(--khus);color:#1A1105;font-weight:600;
+  font-size:14px;padding:11px 20px;border-radius:2px;cursor:pointer;width:100%;margin-top:12px}
+.btn:hover{background:var(--khus-lit)}
+.btn.sm{width:auto;padding:7px 13px;font-size:12.5px;margin:0}
+.btn.ghost{background:transparent;color:var(--paper);border-color:var(--line)}
+.btn.ghost:hover{background:rgba(200,154,84,.1);border-color:var(--khus)}
+.msg{color:#E58279;font-size:13px;margin-top:12px;min-height:18px}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.kpi{background:var(--root-2);padding:20px}
+.kpi b{display:block;font-family:var(--display);font-size:30px;color:var(--khus-lit);
+  font-weight:600;line-height:1.1}
+.kpi span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);margin-top:6px}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}}
+
+/* table */
+table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:3px;
+  overflow:hidden;font-size:14px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);text-align:left;padding:12px 14px;background:var(--root-2);font-weight:500;
+  border-bottom:1px solid var(--line)}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--root-2)}
+.pname{font-weight:600}
+.pgrade{font-family:var(--mono);font-size:10px;color:var(--khus);letter-spacing:.1em;
+  text-transform:uppercase;margin-top:2px}
+.pill{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 9px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;
+  border:1px solid var(--line);white-space:nowrap}
+.pill i{width:5px;height:5px;border-radius:50%;background:var(--ok);display:block}
+.pill.low i{background:var(--warn)} .pill.out i{background:var(--bad)}
+.pill.closed i{background:var(--dim)}
+.stk{width:64px;text-align:center;font-family:var(--mono)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.num{font-family:var(--mono)}
+
+/* orders */
+.order{border:1px solid var(--line);border-radius:3px;margin-bottom:12px;background:var(--root-2)}
+.order-top{display:flex;gap:14px;align-items:center;padding:14px 16px;flex-wrap:wrap}
+.order-top .who{flex:1;min-width:180px}
+.order-top .who b{display:block}
+.order-top .who small{color:var(--dim);font-family:var(--mono);font-size:11.5px}
+.order-body{padding:0 16px 14px;display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  border-top:1px solid var(--line);padding-top:14px}
+@media(max-width:700px){.order-body{grid-template-columns:1fr}}
+.order-body h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--khus);margin:0 0 8px;font-weight:500}
+.order-body p{margin:0;color:var(--dim);font-size:13.5px;line-height:1.7}
+.order-body ul{margin:0;padding:0;list-style:none;font-size:13.5px}
+.order-body li{display:flex;justify-content:space-between;padding:3px 0;color:var(--dim)}
+.ship-row{display:flex;gap:8px;margin-top:12px}
+.ship-row input{flex:1}
+.empty{color:var(--dim);text-align:center;padding:40px;font-size:14px;
+  border:1px dashed var(--line);border-radius:3px}
+.hide{display:none}
+footer{color:var(--dim);font-family:var(--mono);font-size:11px;text-align:center;
+  padding:50px 0 30px}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <img src="assets/logo-mark.png" alt="">
+  <h1>Vetriver Admin</h1>
+  <p>Paste your admin token to continue.</p>
+  <input id="tok" type="password" placeholder="Admin token" autocomplete="current-password">
+  <button class="btn" id="go">Sign in</button>
+  <p class="msg" id="loginMsg"></p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="app" class="hide">
+  <header>
+    <div class="wrap">
+      <img src="assets/logo-mark.png" alt="">
+      <span><b>VETRIVER</b><small>Admin</small></span>
+      <span class="sp" id="clock"></span>
+      <button id="logout">Sign out</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h2>Today</h2>
+    <div class="kpis">
+      <div class="kpi"><b id="kRev">₹0</b><span>Revenue</span></div>
+      <div class="kpi"><b id="kOrders">0</b><span>Paid orders</span></div>
+      <div class="kpi"><b id="kUnits">0</b><span>Units sold</span></div>
+      <div class="kpi"><b id="kLow">0</b><span>Needs restock</span></div>
+    </div>
+
+    <h2>Stock</h2>
+    <p class="eyebrow">Edit a number, press Save. Close takes it off the shop entirely.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th><th>Price</th><th>Stock</th><th>Sold</th>
+          <th>Status</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+
+    <h2>Orders to pack</h2>
+    <div id="orders"></div>
+
+    <footer>Vetriver Farmers India Private Limited · Ottanchatharam, Dindigul</footer>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+let TOKEN = sessionStorage.getItem('vr_admin') || '';
+const inr = n => '₹' + Number(n).toLocaleString('en-IN');
+
+const api = (path, opts = {}) => fetch(path, {
+  ...opts,
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + TOKEN,
+    ...(opts.headers || {})
+  }
+});
+
+/* ---------- auth ---------- */
+async function signIn(tok){
+  TOKEN = tok;
+  const r = await api('/api/admin/sales');
+  if(r.status === 401){
+    $('loginMsg').textContent = 'That token was not accepted.';
+    TOKEN = ''; return false;
+  }
+  sessionStorage.setItem('vr_admin', tok);
+  $('login').classList.add('hide');
+  $('app').classList.remove('hide');
+  load();
+  return true;
+}
+$('go').onclick = () => signIn($('tok').value.trim());
+$('tok').addEventListener('keydown', e => { if(e.key === 'Enter') $('go').click(); });
+$('logout').onclick = () => { sessionStorage.removeItem('vr_admin'); location.reload(); };
+
+/* ---------- load everything ---------- */
+async function load(){
+  const [sales, products, orders] = await Promise.all([
+    api('/api/admin/sales').then(r => r.json()),
+    api('/api/admin/products').then(r => r.json()),
+    api('/api/admin/orders').then(r => r.json()),
+  ]);
+
+  $('kRev').textContent    = inr(sales.revenue);
+  $('kOrders').textContent = sales.orders;
+  $('kUnits').textContent  = sales.units;
+  $('kLow').textContent    = products.filter(p =>
+    p.active && p.available <= 10).length;
+
+  const label = { in:'In stock', low:'Low', out:'Sold out', closed:'Closed' };
+
+  $('rows').innerHTML = products.map(p => {
+    const sold = sales.byProduct?.[p.id]?.units || 0;
+    return `
+    <tr data-id="${p.id}">
+      <td>
+        <div class="pname">${p.name}</div>
+        <div class="pgrade">${p.grade}</div>
+      </td>
+      <td><input class="stk price" type="number" value="${p.price}" min="1"></td>
+      <td><input class="stk stock" type="number" value="${p.stock}" min="0"></td>
+      <td class="num">${sold}</td>
+      <td>
+        <span class="pill ${p.state}"><i></i>${label[p.state]}</span>
+        ${p.reserved ? `<div class="pgrade">${p.reserved} reserved</div>` : ''}
+      </td>
+      <td>
+        <div class="acts">
+          <button class="btn sm save">Save</button>
+          <button class="btn sm ghost toggle">${p.active ? 'Close' : 'Reopen'}</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+
+  // save price + stock together
+  $('rows').querySelectorAll('.save').forEach(b => {
+    b.onclick = async () => {
+      const tr = b.closest('tr');
+      b.textContent = '…';
+      await api('/api/admin/product/' + tr.dataset.id, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          price: Number(tr.querySelector('.price').value),
+          stock: Number(tr.querySelector('.stock').value),
+          batch: Number(tr.querySelector('.stock').value)   // reset the bar to the new batch
+        })
+      });
+      load();
+    };
+  });
+
+  // close / reopen — this is the "take it off the shop" button
+  $('rows').querySelectorAll('.toggle').forEach(b => {
+    b.onclick = async () => {
+      const tr = b.closest('tr');
+      const closing = b.textContent.trim() === 'Close';
+      await api('/api/admin/product/' + tr.dataset.id, {
+        method: 'PATCH', body: JSON.stringify({ active: !closing })
+      });
+      load();
+    };
+  });
+
+  /* ---------- fulfilment queue ---------- */
+  $('orders').innerHTML = orders.length === 0
+    ? '<p class="empty">No paid orders yet.</p>'
+    : orders.map(o => {
+        const s = o.ship;
+        const when = new Date(o.created).toLocaleString('en-IN',
+          { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' });
+        return `
+        <div class="order" data-id="${o.id}">
+          <div class="order-top">
+            <span class="who">
+              <b>${s.name}</b>
+              <small>${when} · ${o.id}</small>
+            </span>
+            <span class="pill ${o.status === 'shipped' ? '' : 'low'}">
+              <i></i>${o.status === 'shipped' ? 'Shipped' : 'To pack'}
+            </span>
+            <b class="num">${inr(o.amount)}</b>
+          </div>
+          <div class="order-body">
+            <div>
+              <h4>Pack</h4>
+              <ul>${o.items.map(i =>
+                `<li><span>${i.name}</span><span>× ${i.qty}</span></li>`).join('')}</ul>
+            </div>
+            <div>
+              <h4>Ship to</h4>
+              <p>
+                ${s.address}<br>
+                ${s.city}, ${s.state} — <b>${s.pin}</b><br>
+                ${s.phone} · ${s.email}
+              </p>
+              <div class="ship-row">
+                <input class="trk" placeholder="Tracking number"
+                       value="${o.tracking || ''}">
+                <button class="btn sm mark">
+                  ${o.status === 'shipped' ? 'Update' : 'Mark shipped'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+
+  $('orders').querySelectorAll('.mark').forEach(b => {
+    b.onclick = async () => {
+      const box = b.closest('.order');
+      await api('/api/admin/order/' + box.dataset.id, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          status: 'shipped',
+          tracking: box.querySelector('.trk').value.trim()
+        })
+      });
+      load();
+    };
+  });
+}
+
+/* ---------- boot ---------- */
+setInterval(() => {
+  $('clock').textContent = new Date().toLocaleTimeString('en-IN',
+    { hour:'2-digit', minute:'2-digit' });
+}, 1000);
+
+if(TOKEN) signIn(TOKEN);
+setInterval(() => { if(TOKEN) load(); }, 30000);
+</script>
+</body>
+</html>
