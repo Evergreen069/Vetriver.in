@@ -1198,6 +1198,18 @@ let cart     = JSON.parse(localStorage.getItem('vetriver_cart') || '[]');
 const $ = id => document.getElementById(id);
 const inr = n => '₹' + n.toLocaleString('en-IN');
 
+/* Static preview data — used only when /api is unreachable (e.g. this page
+   hosted on GitHub Pages for design review). Mirrors CATALOGUE in server.js.
+   The live site always prefers the real API; this never overrides it. */
+const MOCK_PRODUCTS = [
+  { id:'garland-classic', name:'Healing Garland',     tagline:'Hand-tied vetiver root mala',      grade:'Finest long fibre', price:899,  mrp:1299, img:'assets/garland-square.jpg', available:42, total:50,  status:'in' },
+  { id:'curtain-window',  name:'Khus Window Curtain', tagline:'The original room cooler',         grade:'Medium fibre',      price:1490, mrp:1999, img:'assets/p-curtain.jpg',      available:30, total:30,  status:'in' },
+  { id:'mat-meditation',  name:'Meditation Mat',      tagline:'Woven root, for sitting still',     grade:'Medium fibre',      price:1249, mrp:1699, img:'assets/p-mat.jpg',          available:25, total:25,  status:'in' },
+  { id:'pad-cooler',      name:'Desert Cooler Pad',   tagline:'Replaces the synthetic honeycomb',  grade:'Short fibre',       price:399,  mrp:599,  img:'assets/p-pad.jpg',          available:80, total:80,  status:'in' },
+  { id:'oil-ruhkhus',     name:'Ruh Khus Oil - 10ml', tagline:'Steam-distilled from our offcuts',  grade:'Distilled offcuts', price:649,  mrp:899,  img:'assets/p-oil.jpg',          available:60, total:60,  status:'in' },
+  { id:'roots-loose',     name:'Loose Roots - 250g',  tagline:'For your water pot, your bath',     grade:'Sorted whole root', price:299,  mrp:399,  img:'assets/p-roots.jpg',        available:100,total:100, status:'in' },
+];
+
 /* ---------- CATALOGUE ---------- */
 async function loadCatalogue(){
   const el = $('catalogue');
@@ -1206,8 +1218,7 @@ async function loadCatalogue(){
     if(!r.ok) throw 0;
     products = await r.json();
   }catch(e){
-    el.innerHTML = '<p class="skel">Catalogue unavailable — connect /api/products.</p>';
-    return;
+    products = MOCK_PRODUCTS;   // no backend on this host — show the preview catalogue
   }
 
   // The garland already has its own buy box above; don't repeat it here.
@@ -1256,8 +1267,9 @@ async function loadStock(){
     const d = await r.json();
     stock = { available: d.available, total: d.total || 50, status: d.status };
   }catch(e){
-    // Backend not wired yet — fail visible, not silent.
-    stock = { available: null, total: 50, status: 'unknown' };
+    // No backend on this host — fall back to the same preview numbers as the catalogue.
+    const m = MOCK_PRODUCTS.find(p => p.id === PRODUCT.id);
+    stock = { available: m.available, total: m.total, status: m.status };
   }
   renderStock();
 }
