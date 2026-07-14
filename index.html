@@ -199,7 +199,8 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth; scroll-padding-top:90px; -webkit-text-size-adjust:100%;
+  -webkit-tap-highlight-color:transparent}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -207,7 +208,8 @@ html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
 body{
   margin:0; background:var(--root); color:var(--paper);
   font-family:var(--body); font-size:17px; line-height:1.65;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  font-feature-settings:"kern","liga"; accent-color:var(--khus);
   overflow-x:hidden;
 }
 img{max-width:100%; display:block}
@@ -216,6 +218,7 @@ a{color:inherit}
 
 /* focus — visible, on-brand, never removed */
 :focus-visible{outline:2px solid var(--khus-lit); outline-offset:3px; border-radius:2px}
+::selection{background:var(--khus); color:var(--root)}
 
 /* skip link — first tab stop, hidden until focused */
 .skip{position:absolute; left:-9999px; top:0; z-index:100;
@@ -231,10 +234,10 @@ a{color:inherit}
 }
 .eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
 
-h1,h2,h3{font-family:var(--display); font-weight:400; letter-spacing:-.01em; margin:0}
+h1,h2,h3{font-family:var(--display); font-weight:400; letter-spacing:-.01em; margin:0; text-wrap:balance}
 h2{font-size:clamp(30px,4.4vw,52px); line-height:1.08}
 h3{font-size:20px; line-height:1.3}
-p{margin:0 0 1em}
+p{margin:0 0 1em; text-wrap:pretty}
 .lede{font-size:clamp(17px,1.6vw,20px); color:var(--paper-dim); max-width:56ch}
 
 /* ================== NAV ================== */
@@ -330,7 +333,8 @@ h1 em{
   text-decoration:none; display:inline-flex; align-items:center; gap:9px;
   transition:.2s; letter-spacing:.01em;
 }
-.btn-solid{background:var(--khus); border-color:var(--khus); color:#1A1105}
+.btn-solid{background:var(--khus); border-color:var(--khus); color:#1A1105;
+  box-shadow:0 1px 0 rgba(255,255,255,.18) inset, 0 12px 30px -14px rgba(200,154,84,.55)}
 .btn-solid:hover{background:var(--khus-lit); border-color:var(--khus-lit); transform:translateY(-1px)}
 .btn-ghost{background:transparent; border-color:var(--line); color:var(--paper)}
 .btn-ghost:hover{border-color:var(--khus); background:rgba(200,154,84,.07)}
@@ -878,7 +882,7 @@ footer{background:var(--root-2); border-top:1px solid var(--line); padding:clamp
             <img src="assets/garland-square.jpg" alt="" loading="lazy"></button>
           <button data-src="assets/pack-front.jpg" aria-label="Packaging front">
             <img src="assets/pack-front.jpg" alt="" loading="lazy"></button>
-          <button data-src="assets/pack-box.jpg" aria-label="Gift box">
+          <button data-src="assets/pack-box.jpg" aria-label="Box packaging design">
             <img src="assets/pack-box.jpg" alt="" loading="lazy"></button>
         </div>
       </div>
