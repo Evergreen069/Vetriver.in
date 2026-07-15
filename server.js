@@ -64,15 +64,11 @@ db.exec(`
 `);
 
 /* Catalogue. Grades map to the real harvest separation:
-   fine long fibre -> garlands; medium -> curtains & mats;
-   short -> cooler pads; offcuts -> distilled to oil.            */
+   fine long fibre -> window hangings; medium -> cushions; short -> quils. */
 const CATALOGUE = [
-  ['garland-classic','Healing Garland',    'Hand-tied vetiver root mala',      'Finest long fibre',  899,1299,'assets/garland-square.jpg', 50,1],
-  ['curtain-window', 'Khus Window Curtain','The original room cooler',         'Medium fibre',      1490,1999,'assets/p-curtain.jpg',      30,2],
-  ['mat-meditation', 'Meditation Mat',     'Woven root, for sitting still',    'Medium fibre',      1249,1699,'assets/p-mat.jpg',          25,3],
-  ['pad-cooler',     'Desert Cooler Pad',  'Replaces the synthetic honeycomb', 'Short fibre',        399, 599,'assets/p-pad.jpg',          80,4],
-  ['oil-ruhkhus',    'Ruh Khus Oil - 10ml','Steam-distilled from our offcuts', 'Distilled offcuts',  649, 899,'assets/p-oil.jpg',          60,5],
-  ['roots-loose',    'Loose Roots - 250g', 'For your water pot, your bath',    'Sorted whole root',  299, 399,'assets/p-roots.jpg',       100,6],
+  ['garland-classic','Window Hanging (Malai)','Hand-tied vetiver root mala', 'Finest long fibre',  899,1299,'assets/garland-square.jpg', 50,1],
+  ['cushion-classic','Cushion',                'Woven root, cool to touch',  'Medium fibre',       1249,1699,'assets/p-mat.jpg',          25,2],
+  ['quils-classic',  'Quils',                  'Hand-rolled root quils',     'Short fibre',         399, 599,'assets/p-pad.jpg',          80,3],
 ];
 const ins = db.prepare(`INSERT OR IGNORE INTO products
   (id,name,tagline,grade,price,mrp,img,stock,sort,batch) VALUES (?,?,?,?,?,?,?,?,?,?)`);
