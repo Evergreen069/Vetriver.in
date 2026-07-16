@@ -64,11 +64,20 @@ db.exec(`
 `);
 
 /* Catalogue. Grades map to the real harvest separation:
-   fine long fibre -> window hangings; medium -> cushions; short -> quils. */
+   fine long fibre -> window hangings; medium -> cushions; short -> quils.
+   malai-1ft/2ft/3ft are size options of the same window hanging, switched via a
+   front-end pill selector on the hero buy box (not a separate variant system —
+   each size is just its own catalogue row, same as any other product).
+   PLACEHOLDER PRICING for 2ft/3ft/long — scaled off the real 1ft price; confirm
+   real numbers with the client before launch. */
 const CATALOGUE = [
-  ['garland-classic','Window Hanging (Malai)','Hand-tied vetiver root mala', 'Finest long fibre',  899,1299,'assets/garland-square.jpg', 50,1],
-  ['cushion-classic','Cushion',                'Woven root, cool to touch',  'Medium fibre',       1249,1699,'assets/p-mat.jpg',          25,2],
-  ['quils-classic',  'Quils',                  'Hand-rolled root quils',     'Short fibre',         399, 599,'assets/p-pad.jpg',          80,3],
+  ['malai-1ft',        'Window Hanging (Malai) — 1 ft', 'Hand-tied vetiver root mala', 'Finest long fibre',  899,1299,'assets/garland-1ft.jpg', 50,1],
+  ['malai-2ft',        'Window Hanging (Malai) — 2 ft', 'Hand-tied vetiver root mala', 'Finest long fibre', 1449,1999,'assets/garland-2ft.jpg', 40,2],
+  ['malai-3ft',        'Window Hanging (Malai) — 3 ft', 'Hand-tied vetiver root mala', 'Finest long fibre', 1999,2699,'assets/garland-3ft.jpg', 30,3],
+  // No distinct real photo exists yet for this product — reuses the malai artwork as a placeholder.
+  ['window-garland-long','Long Window Garland',         'The long-strand window piece', 'Finest long fibre',1699,2299,'assets/garland-long.jpg', 30,4],
+  ['cushion-classic',  'Cushion',                'Woven root, cool to touch',  'Medium fibre',       1249,1699,'assets/p-mat.jpg',          25,5],
+  ['quils-classic',    'Quils',                  'Hand-rolled root quils',     'Short fibre',         399, 599,'assets/p-pad.jpg',          80,6],
 ];
 const ins = db.prepare(`INSERT OR IGNORE INTO products
   (id,name,tagline,grade,price,mrp,img,stock,sort,batch) VALUES (?,?,?,?,?,?,?,?,?,?)`);
