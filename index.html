@@ -50,6 +50,113 @@
         "https://www.facebook.com/vetriver.in",
         "https://www.youtube.com/@vetriver"
       ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://vetriver.in/#garland",
+      "name": "Vetriver Window Hanging (Malai) — Vetiver Root Mala (1 ft, 2 ft, 3 ft)",
+      "image": [
+        "https://vetriver.in/assets/garland-1ft.jpg",
+        "https://vetriver.in/assets/garland-2ft.jpg",
+        "https://vetriver.in/assets/garland-3ft.jpg",
+        "https://vetriver.in/assets/pack-box.jpg"
+      ],
+      "description": "A handwoven ring of 100% natural vetiver (khus) roots. Naturally cooling, releases an earthy aroma for up to 36 months, fully biodegradable. Hand-tied by rural women artisans in Dindigul, Tamil Nadu.",
+      "brand": { "@type": "Brand", "name": "Vetriver" },
+      "material": "Vetiver root (Chrysopogon zizanioides)",
+      "countryOfOrigin": "IN",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://vetriver.in/#buy",
+        "priceCurrency": "INR",
+        "price": "899",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "INR" },
+          "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "IN" }
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://vetriver.in/#catalogue",
+      "name": "Vetriver vetiver root products",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": {
+          "@type": "Product", "name": "Long Window Garland",
+          "description": "The long-strand vetiver root window piece. Naturally cooling and aromatic.",
+          "image": "https://vetriver.in/assets/garland-long.jpg",
+          "brand": { "@type": "Brand", "name": "Vetriver" },
+          "offers": { "@type": "Offer", "price": "1699", "priceCurrency": "INR",
+                      "availability": "https://schema.org/InStock" } } },
+        { "@type": "ListItem", "position": 2, "item": {
+          "@type": "Product", "name": "Vetiver Root Cushion",
+          "description": "Hand-woven vetiver root cushion. Naturally cooling and aromatic.",
+          "image": "https://vetriver.in/assets/p-mat.jpg",
+          "brand": { "@type": "Brand", "name": "Vetriver" },
+          "offers": { "@type": "Offer", "price": "1249", "priceCurrency": "INR",
+                      "availability": "https://schema.org/InStock" } } },
+        { "@type": "ListItem", "position": 3, "item": {
+          "@type": "Product", "name": "Vetiver Root Quils",
+          "description": "Hand-rolled vetiver root quils. Compact, naturally cooling and aromatic.",
+          "image": "https://vetriver.in/assets/p-pad.jpg",
+          "brand": { "@type": "Brand", "name": "Vetriver" },
+          "offers": { "@type": "Offer", "price": "399", "priceCurrency": "INR",
+                      "availability": "https://schema.org/InStock" } } }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://vetriver.in/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a vetiver garland used for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A vetiver window hanging (malai) is hung near an entrance, bedroom, pooja room, car or workspace. When lightly misted with water it releases a cool, earthy aroma and freshens the air naturally. Vetiver roots have been used this way in Indian homes and temples for over 3,000 years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does the aroma last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Up to 36 months. The aroma is strongest when the roots are lightly misted with water — this is the traditional method and reactivates the fragrance each time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is vetiver the same as khus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Vetiver (Chrysopogon zizanioides) is called khus in North India and vettiver in Tamil — the word means 'the root that is dug up'. It is the same plant used in khus curtains, desert coolers and Ayurvedic cooling preparations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I care for the garland?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mist it lightly with water to refresh the aroma, and allow air to circulate around it. Do not soak it. Keep it out of continuous direct sunlight. No other maintenance is needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do you ship, and how long does it take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We ship across India, free of charge. Orders are dispatched from Dindigul, Tamil Nadu within 2 working days and typically arrive in 3–7 days depending on your pin code."
+          }
+        }
+      ]
     }
   ]
 }
@@ -61,16 +168,16 @@
 
 <header>
   <nav class="wrap">
-    <a class="brand" href="index.html">
+    <a class="brand" href="#top">
       <img src="assets/logo-mark.png" alt="" width="34">
       <span><b>VETRIVER</b><small>Natural Wellness</small></span>
     </a>
     <div class="navlinks">
-      <a href="heritage.html">Heritage</a>
-      <a href="farmers.html">Our Farmers</a>
-      <a href="shop.html">Shop</a>
-      <a href="use.html">How to Use</a>
-      <a href="faq.html">FAQ</a>
+      <a href="#heritage">Heritage</a>
+      <a href="#farmers">Our Farmers</a>
+      <a href="#buy">Shop</a>
+      <a href="#use">How to Use</a>
+      <a href="#faq">FAQ</a>
     </div>
     <button class="cart-btn" id="cartBtn" aria-label="Open cart" aria-controls="drawer" aria-expanded="false">
       CART <span class="cart-count" id="cartCount">0</span>
@@ -82,11 +189,11 @@
         </svg>
       </summary>
       <div class="menu-panel">
-        <a href="heritage.html">Heritage</a>
-        <a href="farmers.html">Our Farmers</a>
-        <a href="shop.html">Shop</a>
-        <a href="use.html">How to Use</a>
-        <a href="faq.html">FAQ</a>
+        <a href="#heritage">Heritage</a>
+        <a href="#farmers">Our Farmers</a>
+        <a href="#buy">Shop</a>
+        <a href="#use">How to Use</a>
+        <a href="#faq">FAQ</a>
       </div>
     </details>
   </nav>
@@ -106,8 +213,8 @@
         Indian homes have been cooled for three thousand years, without a plug.
       </p>
       <div class="hero-cta">
-        <a href="shop.html" class="btn btn-solid">Shop the window hanging — ₹899</a>
-        <a href="heritage.html" class="btn btn-ghost">Why vetiver</a>
+        <a href="#buy" class="btn btn-solid">Shop the window hanging — ₹899</a>
+        <a href="#heritage" class="btn btn-ghost">Why vetiver</a>
       </div>
     </div>
     <div class="frame">
@@ -136,35 +243,266 @@
   </div>
 </div>
 
-<!-- ==================== FIND YOUR WAY ==================== -->
-<section>
+<!-- ==================== HERITAGE — the time rule ==================== -->
+<section id="heritage">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">Find your way around</p>
-      <h2>One root. Everything it can become.</h2>
+      <p class="eyebrow">Three thousand years</p>
+      <h2>Older than the fan.<br>Older than the wall socket.</h2>
+      <p class="lede">
+        Vetiver isn't a wellness trend that found a heritage story. It's a heritage
+        that the wellness industry is only now catching up to.
+      </p>
     </div>
-    <div class="supply rv">
-      <a href="heritage.html" style="text-decoration:none">
-        <article style="height:100%">
-          <p class="n">HERITAGE</p>
-          <h3>Older than the fan</h3>
-          <p>Three thousand years of the same root, the same method.</p>
+
+    <div class="heritage-grid">
+      <div class="rule rv">
+        <article class="era">
+          <time>Sangam era · c. 300 BCE</time>
+          <h3>The root that is dug up</h3>
+          <p>Old Tamil literature records vetiver's medicinal use. The name itself —
+             <i>vettiver</i> — means exactly that: the root you dig up.</p>
         </article>
-      </a>
-      <a href="farmers.html" style="text-decoration:none">
-        <article style="height:100%">
-          <p class="n">OUR FARMERS</p>
-          <h3>We buy the whole harvest</h3>
-          <p>Straight from independent farmers around Dindigul.</p>
+        <article class="era">
+          <time>c. 100 BCE</time>
+          <h3>Ushira, in the Ayurvedic canon</h3>
+          <p>Classified as <i>sheeta virya</i> — cooling in potency. Prescribed against
+             fever and the burning of the skin.</p>
         </article>
-      </a>
-      <a href="shop.html" style="text-decoration:none">
-        <article style="height:100%">
-          <p class="n">SHOP</p>
-          <h3>Window hangings, cushions, quils</h3>
-          <p>Live stock, secure checkout, free delivery across India.</p>
+        <article class="era">
+          <time>16th century</time>
+          <h3>Khus ki tatti</h3>
+          <p>Woven root screens hung in doorways and wetted through the afternoon.
+             "When water is thrown on it," a historian of the period wrote,
+             "winter seems to arrive in the midst of summer."</p>
         </article>
-      </a>
+        <article class="era">
+          <time>Then, and still</time>
+          <h3>Garlands for the deity</h3>
+          <p>Vetiver garlands adorn the murti of Nataraja in temples across the south,
+             and are among the offerings most favoured by Ganesha.</p>
+        </article>
+        <article class="era now">
+          <time>Today · Ottanchatharam</time>
+          <h3>The same root, the same hands</h3>
+          <p>Harvested from independent farmers, cleaned, sun-dried, and hand-tied by
+             rural women artisans. Nothing about the method has needed improving.</p>
+        </article>
+      </div>
+
+      <div class="frame rv">
+        <img src="assets/heritage.jpg" loading="lazy"
+             alt="Vetriver heritage chart: vetiver root benefits, craft process and traditional uses"
+             width="1254" height="1254">
+        <span class="frame-tag">Rooted in tradition</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FARMERS / SUPPLY CHAIN ==================== -->
+<section id="farmers">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Where it comes from</p>
+      <h2>We buy the whole harvest.</h2>
+      <p class="lede">
+        Most craft brands buy a sack of roots from a trader and call it sourcing.
+        We work the other end of the chain: we take the crop off the farmer's field —
+        more than three hundred tonnes of it — and find a use for every part.
+      </p>
+    </div>
+
+    <div class="supply">
+      <article class="rv">
+        <p class="n">01 · FIELD</p>
+        <h3>Independent farmers</h3>
+        <p>Vetiver is bought directly from smallholders around Dindigul at a committed
+           price, before harvest. No trader sits in the middle taking the margin.</p>
+      </article>
+      <article class="rv">
+        <p class="n">02 · YARD</p>
+        <h3>Cleaned and separated</h3>
+        <p>Roots are washed, sorted by length and grade, and sun-dried. The finest, longest
+           fibre is set aside — that's what a window hanging is made of.</p>
+      </article>
+      <article class="rv">
+        <p class="n">03 · NOTHING WASTED</p>
+        <h3>Every grade finds a home</h3>
+        <p>Shorter fibre goes into cushions and quils. Buying the whole crop is what
+           lets us pay for the whole crop.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SHOP ==================== -->
+<section id="buy">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">The product</p>
+      <h2>Window Hanging (Malai)</h2>
+    </div>
+
+    <!-- HERO PRODUCT: the window hanging gets the full buy-box treatment -->
+    <div class="shop">
+      <div class="gallery rv">
+        <div class="frame main">
+          <img id="heroImg" src="assets/garland-1ft.jpg"
+               alt="Vetriver Window Hanging (Malai) — handwoven vetiver root mala"
+               width="1000" height="1000" loading="lazy">
+        </div>
+        <div class="thumbs">
+          <button data-src="assets/garland-1ft.jpg" aria-current="true" aria-label="Garland detail">
+            <img src="assets/garland-1ft.jpg" alt="" loading="lazy"></button>
+          <button data-src="assets/garland-square.jpg" aria-label="Lifestyle photo">
+            <img src="assets/garland-square.jpg" alt="" loading="lazy"></button>
+          <button data-src="assets/pack-box.jpg" aria-label="Box packaging design">
+            <img src="assets/pack-box.jpg" alt="" loading="lazy"></button>
+        </div>
+      </div>
+
+      <div class="buybox rv">
+        <p class="eyebrow">Purify · Heal · Restore</p>
+        <h2 style="font-size:clamp(26px,3vw,36px)">Vetiver Root Mala</h2>
+        <p style="color:var(--paper-dim); font-size:15.5px; max-width:48ch">
+          A closed ring of pure vetiver root, hand-tied over a braided core and finished
+          with a magenta cord and a green tassel. Roughly 14&nbsp;inches across —
+          made to hang at a doorway, a pooja room, or a rear-view mirror.
+        </p>
+
+        <div class="sizes" id="sizePills" role="group" aria-label="Choose a size">
+          <button type="button" data-size="malai-1ft" aria-pressed="true">1 ft</button>
+          <button type="button" data-size="malai-2ft" aria-pressed="false">2 ft</button>
+          <button type="button" data-size="malai-3ft" aria-pressed="false">3 ft</button>
+        </div>
+
+        <div class="price">
+          <span class="amt" id="priceAmt">₹899</span>
+          <span class="mrp" id="mrpAmt">₹1,299</span>
+          <span class="off" id="offAmt">SAVE 31%</span>
+        </div>
+        <p class="tax">Inclusive of all taxes · Free delivery across India</p>
+
+        <!-- LIVE STOCK -->
+        <div class="stock" id="stockBox">
+          <div class="stock-row">
+            <span class="dot"></span>
+            <span class="stock-label" id="stockLabel">In stock</span>
+          </div>
+          <div class="bar"><i id="stockBar" style="width:0%"></i></div>
+          <small id="stockNote">Loading live inventory…</small>
+        </div>
+
+        <div class="qty">
+          <button id="qMinus" aria-label="Decrease quantity">−</button>
+          <span id="qVal">1</span>
+          <button id="qPlus" aria-label="Increase quantity">+</button>
+        </div>
+
+        <div class="buy-actions">
+          <button class="btn btn-solid" id="addBtn">Add to cart</button>
+          <button class="btn btn-ghost" id="buyNowBtn">Buy now</button>
+        </div>
+
+        <ul class="assure">
+          <li>Dispatched from Dindigul within 2 working days</li>
+          <li>7-day replacement if it arrives damaged</li>
+          <li>Secure payment — UPI, cards, net banking via Razorpay</li>
+          <li>Plastic-free packaging, recyclable kraft box</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CATALOGUE: the rest of the harvest.
+         The grade label on each card is the argument — it shows the whole
+         crop being used, which is the thing nobody else can claim. -->
+    <div class="catalogue-head rv">
+      <p class="eyebrow">The rest of the root</p>
+      <h2 style="font-size:clamp(26px,3.4vw,40px)">Nothing is wasted.</h2>
+      <p class="lede" style="margin-top:14px">
+        One harvest, sorted by grade. The longest fibre becomes a window hanging.
+        What's left becomes a cushion, a set of quils.
+      </p>
+    </div>
+    <div class="grid" id="catalogue" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ==================== HOW TO USE ==================== -->
+<section id="use">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">How to use it</p>
+      <h2>Hang it. Mist it. That's all.</h2>
+      <p class="lede">
+        There is no ritual to learn and nothing to replace. The roots do the work;
+        water wakes them up.
+      </p>
+    </div>
+    <div class="steps">
+      <article class="step rv">
+        <p class="n">STEP 01</p>
+        <h3>Hang it where air moves</h3>
+        <p>An entrance, a bedroom door, the pooja room, a car mirror, a desk. Airflow is
+           what carries the aroma — a sealed cupboard will do nothing.</p>
+      </article>
+      <article class="step rv">
+        <p class="n">STEP 02</p>
+        <h3>Mist it with water</h3>
+        <p>A light spray, not a soak. The roots release their cool, earthy scent as the
+           water evaporates. Repeat whenever the room needs it.</p>
+      </article>
+      <article class="step rv">
+        <p class="n">STEP 03</p>
+        <h3>Let it breathe</h3>
+        <p>Keep it out of standing sun and let air circulate. Cared for this way, a single
+           window hanging stays fragrant for up to 36 months.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ (matches FAQPage schema) ==================== -->
+<section id="faq" style="background:var(--root-2); border-block:1px solid var(--line)">
+  <div class="wrap" style="max-width:860px">
+    <div class="sec-head rv">
+      <p class="eyebrow">Questions</p>
+      <h2>Before you buy</h2>
+    </div>
+    <div class="rv">
+      <details open>
+        <summary>What is a vetiver window hanging actually for?</summary>
+        <p>You hang it — at an entrance, in a bedroom, in the pooja room, in a car or at a
+           workspace. Misted with water it releases a cool, earthy aroma and freshens the air.
+           Indian homes and temples have used vetiver root this way for over 3,000 years.</p>
+      </details>
+      <details>
+        <summary>Is vetiver the same thing as khus?</summary>
+        <p>Yes. Vetiver (<i>Chrysopogon zizanioides</i>) is called <i>khus</i> in North India and
+           <i>vettiver</i> in Tamil — the word means "the root that is dug up". It's the same plant
+           used in khus curtains, desert-cooler pads and Ayurvedic cooling preparations.</p>
+      </details>
+      <details>
+        <summary>How long does the aroma really last?</summary>
+        <p>Up to 36 months. It isn't a constant perfume — the scent is strongest right after you
+           mist it, which is the traditional method and reactivates the fragrance each time.</p>
+      </details>
+      <details>
+        <summary>How do I care for it?</summary>
+        <p>Mist lightly, don't soak. Let air move around it. Keep it out of continuous direct
+           sunlight. There's nothing else to do and nothing to refill.</p>
+      </details>
+      <details>
+        <summary>Where do you ship, and how long does it take?</summary>
+        <p>Across India, free. Orders leave Dindigul, Tamil Nadu within 2 working days and usually
+           arrive in 3–7 days depending on your pin code. You'll get a tracking link by SMS and email.</p>
+      </details>
+      <details>
+        <summary>Is it safe around children and pets?</summary>
+        <p>It's dried grass root and cotton cord — nothing is added to it, no chemicals, no synthetic
+           fragrance, no plastic. Hang it out of reach of small children as you would any hanging object.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -199,7 +537,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="brand" href="index.html" style="margin-bottom:18px">
+        <a class="brand" href="#top" style="margin-bottom:18px">
           <img src="assets/logo-mark.png" alt="" width="38">
           <span><b>VETRIVER</b><small>Natural Wellness</small></span>
         </a>
@@ -211,11 +549,11 @@
       <div>
         <h4>Explore</h4>
         <ul>
-          <li><a href="heritage.html">Heritage</a></li>
-          <li><a href="farmers.html">Our farmers</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="use.html">How to use</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="#heritage">Heritage</a></li>
+          <li><a href="#farmers">Our farmers</a></li>
+          <li><a href="#buy">Shop</a></li>
+          <li><a href="#use">How to use</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
